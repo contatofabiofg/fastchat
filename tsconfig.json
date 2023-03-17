@@ -1,0 +1,28 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json", //pré-configurações da biblioteca
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"], //pastas e arquivos que o ts vai ler
+  "compilerOptions": {
+    "outDir": "./built", //pesquisar sobre
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["node"],
+    //"target": "esnext", // Ele converterá todo o código TS para o mais recente JS - Já está na biblioteca instalada @vue/tsconfig
+    //"module": "esnext", //Já está na biblioteca instalada @vue/tsconfig
+    //"moduleResolution": "node" //Já está na biblioteca instalada @vue/tsconfig
+  },
+
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    }
+  ],
+  "exclude": [
+    "./plugins/**/*",
+    "./typings/**/*",
+    "./built/**/*" // This is what fixed it!
+]
+  
+}
